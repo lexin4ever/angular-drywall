@@ -39,7 +39,7 @@
 
 #admin-accounts-index, #admin-administrators-index,
 #admin-groups-index{
-  &:extend(#admin-users-index);
+  #admin-users-index();
   .nowrap {
     white-space: nowrap;
   }
@@ -124,7 +124,7 @@
 }
 
 #admin-statuses-index, #admin-categories-index{
-  &:extend(#admin-accounts-index);
+  #admin-accounts-index();
   .input-group{
     input {
       width: 100px !important;
