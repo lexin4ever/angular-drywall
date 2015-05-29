@@ -19,17 +19,20 @@ Inspired by and forked from [Drywall](https://github.com/jedireza/drywall).
 
 ## Technology
 
-[Angular-Drywall](http://arthurkao.github.io/angular-drywall)'s backend is pure Node.js RESTful API Server that renders no html pages . Front-end is built with [AngularJS](https://angularjs.org/), [Bootstrap](https://angular-ui.github.io/bootstrap/) and [SASS](http://sass-lang.com/).
+[Angular-Drywall](http://arthurkao.github.io/angular-drywall)'s backend is pure Node.js RESTful API Server that renders no html pages . Front-end is built with [AngularJS](https://angularjs.org/), [Bootstrap](https://angular-ui.github.io/bootstrap/) and [LESS](http://lesscss.org/).
 [Grunt](http://gruntjs.com/) manages various development, testing and production build tasks.
 
 | On The Server  | On The Client | Development |
 |:--------------:|:-------------:|:-----------:|
 | Express        | AngularJS     | Grunt       |
 | Mongo/Mongoose | Bootstrap     | Npm         |
-| Passport       | SASS          | Bower       |
+| Passport       | LESS          | Bower       |
 | EmailJS        | Font-Awesome  | Karma       |
 |                | Moment.js     |             |
 
+## Changes from [arthurkao](https://github.com/arthurkao/angular-drywall) version
+
+I use LESS instead of SASS. No more changes from revision [6e4969d](https://github.com/arthurkao/angular-drywall/commit/b950f32f15a8ef2aeed6d0960819f1d2a3df44f3) on May 4, 2015
 
 ## Live demo
 
@@ -43,7 +46,6 @@ Have these packages installed and running on your system.
 
 - [Node.js](https://nodejs.org/download/), and npm.
 - [MongoDB](https://www.mongodb.org/downloads)
-- [SASS](http://sass-lang.com/install)
 - [Grunt-cli](http://gruntjs.com/getting-started)
 - [Bower](http://bower.io/#install-bower)
 

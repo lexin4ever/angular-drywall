@@ -1,5 +1,5 @@
 .navbar {
-  @include box-shadow(0, 2px, 5px, rgba(0, 0, 0, 0.125));
+  .box-shadow(0, 2px, 5px, rgba(0, 0, 0, 0.125));
 
   .navbar-brand {
     font-weight: bold;
@@ -16,7 +16,7 @@
   }
 
   .navbar-brand-admin {
-    @extend .navbar-brand;
+    &:extend(.navbar-brand);
     color: #eee;
   }
 

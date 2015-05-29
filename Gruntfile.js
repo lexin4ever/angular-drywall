@@ -109,14 +109,14 @@ module.exports = function(grunt) {
         module: 'templates.common'
       }
     },
-    sass: {
+    less: {
       dev: {
         options: {
           style: 'expanded',
           compass: false
         },
         files: {
-          '<%= distdir %>/css/style.css': 'client/src/assets/sass/style.scss'
+          '<%= distdir %>/css/style.css': 'client/src/assets/less/style.less'
         }
       }
     },
@@ -212,7 +212,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -227,7 +227,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
 
 
-  grunt.registerTask('angular', ['copy', 'html2js', 'concat:angular', 'sass:dev']);
+  grunt.registerTask('angular', ['copy', 'html2js', 'concat:angular', 'less:dev']);
 
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('unitTest', ['clean', 'angular', 'karma:unit']);
