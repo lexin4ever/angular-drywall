@@ -32,7 +32,9 @@ Inspired by and forked from [Drywall](https://github.com/jedireza/drywall).
 
 ## Changes from [arthurkao](https://github.com/arthurkao/angular-drywall) version
 
-I use LESS instead of SASS. No more changes from revision [6e4969d](https://github.com/arthurkao/angular-drywall/commit/b950f32f15a8ef2aeed6d0960819f1d2a3df44f3) on May 4, 2015
+I use LESS instead of SASS. 
+Also added optimist to init step.
+No more changes from revision [6e4969d](https://github.com/arthurkao/angular-drywall/commit/b950f32f15a8ef2aeed6d0960819f1d2a3df44f3) on May 4, 2015
 
 ## Live demo
 
@@ -75,6 +77,13 @@ $ node init.js
 $ cp ./config.example.js ./config.js
 $ vi config.js  #set mongodb and email credentials
 $ mongo # use mongo shell to insert required documents. Refer to ./init.js for the list of docs
+```
+
+*Alternatively,* use predefined options __Not recommended.__
+```bash
+node init.js --adminUsername=ADMIN --adminPassword=PASS --adminEmail=admin@gmail.com \
+ --dbHost=localhsot --dbPort=27017 --dbDatabase=angular-drywall --dbUser=admin --dbPassword=pass \
+ --smtpEmail=admin@gmail.com --smtpPassword=pass --smtpHost=smtp.gmail.com
 ```
 
 ## Running the app

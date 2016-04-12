@@ -1,6 +1,9 @@
 var workflow = new (require('events').EventEmitter)();
 var async = require('async');
 var prompt = require('prompt');
+var optimist = require('optimist');
+
+prompt.override = optimist.argv;
 
 workflow.on('collectUserInput', function(){
   prompt.message = ''; prompt.delimiter = '';
@@ -9,20 +12,20 @@ workflow.on('collectUserInput', function(){
     console.log('=====Create admin user=====');
     var schema = {
       properties: {
-        username: {
+        adminUsername: {
           description: 'username',
           type: 'string',                 // Specify the type of input to expect.
           pattern: /^\w+$/,
           message: 'Username must be letters',
           default: 'root'
         },
-        email: {
+        adminEmail: {
           description: 'email',
           pattern: /^[a-zA-Z0-9\-\_\.\+]+@[a-zA-Z0-9\-\_\.]+\.[a-zA-Z0-9\-\_]+$/,
           message: 'Not a valid email address',
           required: true
         },
-        password: {
+        adminPassword: {
           description: 'password',     // Prompt displayed to the user. If not supplied name will be used.
           type: 'string',                 // Specify the type of input to expect.
           pattern: /^\w+$/,                  // Regular expression that input must be valid against.
@@ -38,9 +41,9 @@ workflow.on('collectUserInput', function(){
         return cb(err);
       }
       workflow.admin = {
-        username: result.username,
-        email:    result.email,
-        password: result.password
+        username: result.adminUsername,
+        email:    result.adminEmail,
+        password: result.adminPassword
       };
       cb();
     });
@@ -49,27 +52,27 @@ workflow.on('collectUserInput', function(){
     console.log('=====Setup Mongo DB=====');
     var schema = {
       properties: {
-        host: {
+        dbHost: {
           description: 'MongoDB host',
           type: 'string',                 // Specify the type of input to expect.
           default: 'localhost'
         },
-        port: {
+        dbPort: {
           description: 'MongoDB port',
           type: 'number',
           default: 27017
         },
-        database: {
+        dbDatabase: {
           description: 'MongoDB database',
           type: 'string',
           default: 'angular-drywall'
         },
-        user: {
+        dbUser: {
           description: 'MongoDB user',
           type: 'string',
           default: ''
         },
-        password: {
+        dbPassword: {
           description: 'MongoDB password',
           type: 'string',
           default: '',
@@ -83,11 +86,11 @@ workflow.on('collectUserInput', function(){
         return cb(err);
       }
       workflow.mongo = {
-        host: result.host,
-        port: result.port,
-        database: result.database,
-        user: result.user? result.user: null,
-        password: result.password? result.password: null
+        host: result.dbHost,
+        port: result.dbPort,
+        database: result.dbDatabase,
+        user: result.dbUser? result.dbUser: null,
+        password: result.dbPassword? result.dbPassword: null
       };
       cb();
     });
@@ -96,16 +99,16 @@ workflow.on('collectUserInput', function(){
     console.log('=====(Optional) Set smtp server credential (to send notification email)=====');
     var schema = {
       properties: {
-        email: {
+        smtpEmail: {
           description: 'smtp username',
           default: workflow.admin.email
         },
-        password: {
+        smtpPassword: {
           description: 'smtp password',
           type: 'string',
           hidden: true
         },
-        host: {
+        smtpHost: {
           description: 'smtp server host',
           type: 'string',
           default: 'smtp.gmail.com'
@@ -118,9 +121,9 @@ workflow.on('collectUserInput', function(){
         return cb(err);
       }
       workflow.smtp = {
-        email:    result.email,
-        password: result.password,
-        host:     result.host
+        email:    result.smtpEmail,
+        password: result.smtpPassword,
+        host:     result.smtpHost
       };
       cb();
     });
